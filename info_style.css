@@ -1,17 +1,23 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .info-container {
     position: fixed;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: black;
+    font-weight: 500;
     top: 0;
-    right: -300px; /* Начальное положение вне экрана */
-    width: 300px;
+    right: -28vw; /* Начальное положение вне экрана */
+    width: 28vw;
     height: 100%;
     background: linear-gradient(45deg, 
         rgba(255, 255, 255, 0.3),  /* Полупрозрачный белый */
@@ -31,16 +37,13 @@
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3); /* Тень справа */
     transition: right 0.5s ease; /* Плавный переход */
     z-index: 10;
+    padding: 20px;
 }
 
 .info-container.show {
     right: 0; /* Показать контейнер */
 }
 
-.info-content {
-    padding: 20px;
-    color: rgba(34, 34, 34, 0.7); /* Темно-серый цвет текста с прозрачностью */
-}
 
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -7,6 +8,9 @@
     <link rel="stylesheet" href="background_style.css">
     <link rel="stylesheet" href="info_style.css">
     <link rel="stylesheet" href="menu_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
@@ -14,7 +18,11 @@
     <video autoplay muted loop id="backgroundVideo" class="video-background">
         <source src="https://envs.sh/1wG.mp4" type="video/mp4">
     </video>
-    <h1>Asinfo</h1>
+    <div class="main-title" style="height: 18vh; width: 100%; display: flex; justify-content: center">
+        <div class="main-title-wrapper" style="height: 100%; width: 45vw; background-color: rgba(255, 255, 255, 0.6); border-radius: 10px; display: flex; justify-content: center; align-items: center;">
+            <h1 style="font-weight: 700; font-size: 3rem;">ASSA INFO</h1>
+        </div>
+    </div>
     <div class="navigation">
         <ul>
             <li class="list active">
@@ -47,35 +55,23 @@
                     <span class="icon"><ion-icon name="volume-high"></ion-icon></span>
                 </a>
             </li>
-            <div class="indicator"></div>
         </ul>
     </div>
     
     <div class="info-container">
         <div class="info-content" id="infoContent"></div>
     </div>
-
     <script>
-        const list = document.querySelectorAll('.list');
-        const indicator = document.querySelector('.indicator');
-        const infoContent = document.getElementById('infoContent');
-        const infoContainer = document.querySelector('.info-container');
-        const video = document.getElementById('backgroundVideo');
-        const muteToggle = document.getElementById('muteToggle');
-        const volumeIcon = muteToggle.querySelector('ion-icon');
-
-        function setIndicator() {
-            const activeItem = document.querySelector('.list.active');
-            const itemRect = activeItem.getBoundingClientRect();
-            const navRect = document.querySelector('.navigation').getBoundingClientRect();
-            const centerY = itemRect.top - navRect.top + (itemRect.height / 2);
-            indicator.style.top = `${centerY}px`;
-        }
+        let list = document.querySelectorAll('.list');
+        let infoContent = document.getElementById('infoContent');
+        let infoContainer = document.querySelector('.info-container');
+        let video = document.getElementById('backgroundVideo');
+        let muteToggle = document.getElementById('muteToggle');
+        let volumeIcon = muteToggle.querySelector('ion-icon');
 
         function activeLink() {
             list.forEach((item) => item.classList.remove('active'));
             this.classList.add('active');
-            setIndicator();
 
             const clickedItem = this.querySelector('.icon ion-icon').getAttribute('name');
             showInfo(clickedItem);
@@ -151,7 +147,6 @@
         }
 
         list.forEach((item) => item.addEventListener('click', activeLink));
-        window.addEventListener('load', setIndicator);
 
         muteToggle.addEventListener('click', (event) => {
             event.preventDefault();
